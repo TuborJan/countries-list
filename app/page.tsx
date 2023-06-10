@@ -14,18 +14,19 @@ const Countries = async () => {
   const countries = await getData();
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Blog page</h1>
-      <ul>
-        {countries.map((country: any) => (
-          <li>
-            <Link href={`/country/${country.name.common}`}>
-              {country.name.common}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="grid grid-cols-4 gap-16">
+      {countries.map((country: any) => (
+        <li>
+          <Link href={`/country/${country.name.common}`}>
+            <img
+              className="w-full h-40"
+              src={country.flags.png}
+              alt={country.flags.alt}
+            />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 
