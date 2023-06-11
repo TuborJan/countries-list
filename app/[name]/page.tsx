@@ -46,12 +46,40 @@ export const generateMetadata = async ({
 const Country = async ({ params: { name } }: Props) => {
   const country = await getCountyByName(name);
 
+  //get native lang for country native name
+  let nativeLang = "";
+  for (let key in country[0].name.nativeName) {
+    nativeLang = key;
+    break;
+  }
+
   return (
-    <div>
+    <div className="container grid grid-cols-1 gap-10 max-w-sm mt-10 px-6">
       <Link href={"/"}>Back</Link>
-      <h1 className="text-2xl font-bold">{country[0].name.common}</h1>
       <img src={country[0].flags.png} alt={country[0].flags.alt} />
-      {country[0].borders && (await getBorderCountryName(country[0].borders))}
+      <h1 className="text-2xl font-bold">{country[0].name.common}</h1>
+      <p>
+        Native Name:{" "}
+        <span>
+          {country[0].name.nativeName
+            ? `${country[0].name.nativeName[nativeLang].official}`
+            : "None"}
+        </span>
+      </p>
+      <p>
+        Population: <span>{country[0].population}</span>
+      </p>
+      <p>
+        Region: <span>{country[0].region ? country[0].region : "None"}</span>
+      </p>
+      <p>
+        Sub Region:{" "}
+        <span>{country[0].subregion ? country[0].subregion : "None"}</span>
+      </p>
+      <p>
+        Capital: <span>{country[0].capital ? country[0].capital : "None"}</span>
+      </p>
+      {/* {country[0].borders && (await getBorderCountryName(country[0].borders))} */}
     </div>
   );
 };
