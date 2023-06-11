@@ -22,6 +22,12 @@ module.exports = {
         xl: "1440px",
       },
       colors: {},
+      screens: {
+        mobile: "420px",
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1280px",
+      },
     },
   },
   plugins: [],

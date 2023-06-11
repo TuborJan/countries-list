@@ -1,6 +1,7 @@
 import { getCountyByName } from "@/service/getCountries";
 import { Metadata } from "next";
 import Link from "next/link";
+import { Router } from "next/router";
 
 type Props = {
   params: {
@@ -21,9 +22,15 @@ const getCountiesByCodes = async (codes: object) => {
 const getBorderCountryName = async (borders: object) => {
   const countries = await getCountiesByCodes(borders);
 
-  return countries.map((country: any) => (
-    <Link href={`/${country.name.common}`}>{country.name.common}</Link>
-  ));
+  return (
+    <ul>
+      {countries.map((country: any) => (
+        <li>
+          <Link href={`/${country.name.common}`}>{country.name.common}</Link>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export const generateMetadata = async ({
@@ -41,6 +48,7 @@ const Country = async ({ params: { name } }: Props) => {
 
   return (
     <div>
+      <Link href={"/"}>Back</Link>
       <h1 className="text-2xl font-bold">{country[0].name.common}</h1>
       <img src={country[0].flags.png} alt={country[0].flags.alt} />
       {country[0].borders && (await getBorderCountryName(country[0].borders))}
