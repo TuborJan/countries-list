@@ -6,7 +6,7 @@ interface IProps {
 
 const CountryCard = ({ country }: IProps) => {
   return (
-    <Link href={`/country/${country.name.common}`}>
+    <Link href={`/${country.name.common}`}>
       <img
         className="w-full h-40"
         src={country.flags.png}
