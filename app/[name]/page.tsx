@@ -22,15 +22,11 @@ const getCountiesByCodes = async (codes: object) => {
 const getBorderCountryName = async (borders: object) => {
   const countries = await getCountiesByCodes(borders);
 
-  return (
-    <ul>
-      {countries.map((country: any) => (
-        <li>
-          <Link href={`/${country.name.common}`}>{country.name.common}</Link>
-        </li>
-      ))}
-    </ul>
-  );
+  return countries.map((country: any) => (
+    <li>
+      <Link href={`/${country.name.common}`}>{country.name.common}</Link>
+    </li>
+  ));
 };
 
 export const generateMetadata = async ({
@@ -54,7 +50,7 @@ const Country = async ({ params: { name } }: Props) => {
   }
 
   return (
-    <div className="container grid grid-cols-1 gap-10 max-w-sm mt-10 px-6">
+    <div className="container grid grid-cols-1 gap-10 max-w-sm px-6">
       <Link href={"/"}>Back</Link>
       <img src={country[0].flags.png} alt={country[0].flags.alt} />
       <h1 className="text-2xl font-bold">{country[0].name.common}</h1>
@@ -79,7 +75,9 @@ const Country = async ({ params: { name } }: Props) => {
       <p>
         Capital: <span>{country[0].capital ? country[0].capital : "None"}</span>
       </p>
-      {/* {country[0].borders && (await getBorderCountryName(country[0].borders))} */}
+      <ul className="">
+        {country[0].borders && (await getBorderCountryName(country[0].borders))}
+      </ul>
     </div>
   );
 };
