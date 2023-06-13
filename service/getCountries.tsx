@@ -9,9 +9,3 @@ export const getCountyByName = async (name: string) => {
 
   return response.json();
 };
-
-export const getCountyByCode = async (code: string) => {
-  const response = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
-
-  return response.json();
-};
