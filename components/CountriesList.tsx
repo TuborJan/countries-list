@@ -58,29 +58,31 @@ const CountriesList = ({ countries }: IProps) => {
 
   return (
     <ThemeProvider value={customTheme}>
-      <div className="container max-w-screen-mobile px-2">
-        <input
-          className="w-full mt-6 px-4 py-2 rounded-md"
-          type="search"
-          placeholder="Search for a country..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <div className="mt-8">
-          <Select
-            color="blue-gray"
-            label="Filter by Region"
-            onChange={handleChange}
-          >
-            <Option value="">All</Option>
-            <Option value="Africa">Africa</Option>
-            <Option value="Americas">America</Option>
-            <Option value="Asia">Asia</Option>
-            <Option value="Europe">Europe</Option>
-            <Option value="Oceania">Oceania</Option>
-          </Select>
+      <div className="container max-w-screen-mobile px-2 laptop:max-w-screen-laptop desktop:max-w-screen-desktop">
+        <div className="laptop:flex justify-between">
+          <input
+            className="w-full max-h-10 mt-6 laptop:mt-12 px-4 py-2 rounded-md shadow-md laptop:max-w-sm"
+            type="search"
+            placeholder="Search for a country..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <div className="mt-8 laptop:mt-12">
+            <Select
+              color="blue-gray"
+              label="Filter by Region"
+              onChange={handleChange}
+            >
+              <Option value="">All</Option>
+              <Option value="Africa">Africa</Option>
+              <Option value="Americas">America</Option>
+              <Option value="Asia">Asia</Option>
+              <Option value="Europe">Europe</Option>
+              <Option value="Oceania">Oceania</Option>
+            </Select>
+          </div>
         </div>
-        <ul className="container grid grid-cols-1 gap-10 max-w-xs mt-10 px-6">
+        <ul className="container grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-4 gap-10 desktop:gap-14 max-w-xs mt-10 px-6 laptop:px-0 laptop:max-w-screen-laptop desktop:max-w-screen-desktop">
           {countries
             .filter((country: any) =>
               country.name.common.toLowerCase().includes(search.toLowerCase())
