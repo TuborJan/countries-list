@@ -8,7 +8,7 @@ const CountryCard = ({ country }: IProps) => {
   return (
     <Link href={`/${country.name.common}`}>
       <img
-        className="w-full h-40 shadow-md rounded-l-md rounded-r-md rounded-b-none"
+        className="w-full h-40 shadow-md rounded-t-md"
         src={country.flags.png}
         alt={country.flags.alt}
       />
