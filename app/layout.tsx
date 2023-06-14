@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
-
-const inter = Inter({ subsets: ["latin"] });
+import Provider from "./Provider";
 
 export const metadata: Metadata = {
   title: "Countries list",
@@ -16,10 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen bg-gray-200">{children}</main>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Provider>
+          <Header />
+          <main className="min-h-screen bg-gray-50 dark:bg-veryDarkBlue">
+            {children}
+          </main>
+        </Provider>
       </body>
     </html>
   );

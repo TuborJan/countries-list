@@ -67,7 +67,7 @@ const Country = async ({ params: { name } }: Props) => {
   }
 
   return (
-    <div className="container max-w-sm px-6 py-12">
+    <div className="container max-w-screen-mobile laptop:max-w-screen-laptop desktop:max-w-screen-desktop px-6 py-12">
       <Link
         className="flex items-center max-w-fit px-6 py-1.5 bg-white text-sm hover:shadow-lg"
         href={"/"}
@@ -86,66 +86,72 @@ const Country = async ({ params: { name } }: Props) => {
         </svg>
         <span className="ml-2">Back</span>
       </Link>
-      <img
-        className="mt-14"
-        src={country[0].flags.png}
-        alt={country[0].flags.alt}
-      />
-      <h1 className="mt-14 text-2xl font-bold">{country[0].name.common}</h1>
-      <ul>
-        <li className="mt-4 font-semibold">
-          Native Name:{" "}
-          <span className="font-normal">
-            {country[0].name.nativeName
-              ? `${country[0].name.nativeName[nativeLang].official}`
-              : "None"}
-          </span>
-        </li>
-        <li className="mt-4 font-semibold">
-          Population:{" "}
-          <span className="font-normal">{country[0].population}</span>
-        </li>
-        <li className="mt-4 font-semibold">
-          Region:{" "}
-          <span className="font-normal">
-            {country[0].region ? country[0].region : "None"}
-          </span>
-        </li>
-        <li className="mt-4 font-semibold">
-          Sub Region:{" "}
-          <span className="font-normal">
-            {country[0].subregion ? country[0].subregion : "None"}
-          </span>
-        </li>
-        <li className="mt-4 font-semibold">
-          Capital:{" "}
-          <span className="font-normal">
-            {country[0].capital ? country[0].capital : "None"}
-          </span>
-        </li>
-        <li className="mt-4 font-semibold">
-          Currencies:{" "}
-          <span className="font-normal">
-            {country[0].currencies
-              ? country[0].currencies[currency].name
-              : "None"}
-          </span>
-        </li>
-        <li className="mt-4 font-semibold">
-          Languages:{" "}
-          <span className="font-normal">
-            {getLanguagesInCountry(country[0].languages)}
-          </span>
-        </li>
-      </ul>
-      {country[0].borders && (
-        <>
-          <h3 className="mt-8 font-semibold text-lg">Border Countries:</h3>
-          <ul className="grid grid-cols-3 gap-4 mt-4 text-sm">
-            {await getBorderCountryName(country[0].borders)}
+      <div className="laptop:flex gap-14 justify-between">
+        <div className="laptop:min-w-[350px] desktop:min-w-[500px] mt-14">
+          <img
+            className="w-full"
+            src={country[0].flags.png}
+            alt={country[0].flags.alt}
+          />
+        </div>
+        <div>
+          <h1 className="mt-14 text-2xl font-bold">{country[0].name.common}</h1>
+          <ul className="laptop:grid grid-cols-2 gap-x-10">
+            <li className="mt-4 font-semibold">
+              Native Name:{" "}
+              <span className="font-normal">
+                {country[0].name.nativeName
+                  ? `${country[0].name.nativeName[nativeLang].official}`
+                  : "None"}
+              </span>
+            </li>
+            <li className="mt-4 font-semibold">
+              Population:{" "}
+              <span className="font-normal">{country[0].population}</span>
+            </li>
+            <li className="mt-4 font-semibold">
+              Region:{" "}
+              <span className="font-normal">
+                {country[0].region ? country[0].region : "None"}
+              </span>
+            </li>
+            <li className="mt-4 font-semibold">
+              Sub Region:{" "}
+              <span className="font-normal">
+                {country[0].subregion ? country[0].subregion : "None"}
+              </span>
+            </li>
+            <li className="mt-4 font-semibold">
+              Capital:{" "}
+              <span className="font-normal">
+                {country[0].capital ? country[0].capital : "None"}
+              </span>
+            </li>
+            <li className="mt-4 font-semibold">
+              Currencies:{" "}
+              <span className="font-normal">
+                {country[0].currencies
+                  ? country[0].currencies[currency].name
+                  : "None"}
+              </span>
+            </li>
+            <li className="mt-4 font-semibold">
+              Languages:{" "}
+              <span className="font-normal">
+                {getLanguagesInCountry(country[0].languages)}
+              </span>
+            </li>
           </ul>
-        </>
-      )}
+          {country[0].borders && (
+            <>
+              <h3 className="mt-8 font-semibold text-lg">Border Countries:</h3>
+              <ul className="grid grid-cols-3 laptop:grid-cols-4 gap-4 mt-4 text-sm">
+                {await getBorderCountryName(country[0].borders)}
+              </ul>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
