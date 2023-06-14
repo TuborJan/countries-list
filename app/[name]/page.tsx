@@ -22,7 +22,7 @@ const getBorderCountryName = async (borders: object) => {
   const countries = await getCountiesByCodes(borders);
 
   return countries.map((country: any) => (
-    <li className="py-1 rounded-sm hover:shadow-lg text-center bg-white">
+    <li className="py-1 rounded-sm hover:shadow-lg text-center bg-white dark:bg-darkBlue">
       <Link href={`/${country.name.common}`}>{country.name.common}</Link>
     </li>
   ));
@@ -69,7 +69,7 @@ const Country = async ({ params: { name } }: Props) => {
   return (
     <div className="container max-w-screen-mobile laptop:max-w-screen-laptop desktop:max-w-screen-desktop px-6 py-12">
       <Link
-        className="flex items-center max-w-fit px-6 py-1.5 bg-white text-sm hover:shadow-lg"
+        className="flex items-center max-w-fit px-6 py-1.5 bg-white dark:bg-darkBlue text-sm hover:shadow-lg"
         href={"/"}
       >
         <svg
