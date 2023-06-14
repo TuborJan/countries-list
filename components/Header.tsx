@@ -1,5 +1,3 @@
-"use client";
-
 import ThemeChangeButton from "./ThemeChangeButton";
 
 export const Header = () => {

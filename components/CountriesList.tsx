@@ -37,7 +37,11 @@ const customTheme: ICustomMaterialTailwindTheme = {
         },
         select: {
           border: "border-none",
-          bg: "bg-white dark:bg-black",
+          bg: "bg-white dark:bg-darkBlue",
+        },
+        menu: {
+          border: "border-none",
+          bg: "bg-white dark:bg-darkBlue",
         },
         label: {
           after: "after:border-none",
@@ -61,7 +65,7 @@ const CountriesList = ({ countries }: IProps) => {
       <div className="container max-w-screen-mobile px-2 pb-10 tablet:max-w-screen-tablet laptop:max-w-screen-laptop desktop:max-w-screen-desktop">
         <div className="laptop:flex justify-between">
           <input
-            className="w-full max-h-10 mt-6 laptop:mt-12 px-4 py-2 rounded-md shadow-md laptop:max-w-sm"
+            className="w-full max-h-10 mt-6 laptop:mt-12 px-4 py-2 dark:bg-darkBlue outline-none dark:placeholder:text-white rounded-md shadow-md laptop:max-w-sm"
             type="search"
             placeholder="Search for a country..."
             value={search}
@@ -92,7 +96,7 @@ const CountriesList = ({ countries }: IProps) => {
             )
             .map((country: any) => (
               <li
-                className="bg-white rounded-md shadow-lg"
+                className="bg-white dark:bg-darkBlue rounded-md shadow-lg"
                 key={country.name.common}
               >
                 <CountryCard country={country} />
