@@ -22,7 +22,10 @@ const getBorderCountryName = async (borders: object) => {
   const countries = await getCountiesByCodes(borders);
 
   return countries.map((country: any) => (
-    <li className="py-1 rounded-sm hover:shadow-lg text-center bg-white dark:bg-darkBlue">
+    <li
+      key={country.name.common}
+      className="py-1 rounded-sm hover:shadow-lg text-center bg-white dark:bg-darkBlue"
+    >
       <Link href={`/${country.name.common}`}>{country.name.common}</Link>
     </li>
   ));
